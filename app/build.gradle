@@ -14,16 +14,16 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
+            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"bf5ce139ca6f75e7f4b3bd292270403c"'
+            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"086ec658f6c278d72ef3384477277709"'
             buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
 
         }
 
         release {
             minifyEnabled false
-            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
+            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"bf5ce139ca6f75e7f4b3bd292270403c"'
+            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"086ec658f6c278d72ef3384477277709"'
             buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
