@@ -14,7 +14,7 @@ class CharacterServicesImpl(private val api: MarvelResquestGenerator = MarvelRes
             val callResponse = api.createService(MarvelApi::class.java).getCharacter()
             val response = callResponse.execute()
             if (response.isSuccessful) {
-                subscriber.onNext(mapper.transform(response.body()!!.data!!.characters))
+                subscriber.onNext(mapper.transform(response.body()?.data!!.characters))
                 subscriber.onComplete()
             } else {
                 subscriber.onError(Throwable(response.message()))
@@ -22,12 +22,12 @@ class CharacterServicesImpl(private val api: MarvelResquestGenerator = MarvelRes
         }
     }
 
-    fun getCaractersDetail(id: Int): Observable<List<Character>> {
+    fun getCaractersDetail(id: Int?): Observable<List<Character>> {
         return Observable.create { subscriber ->
             val callResponse = api.createService(MarvelApi::class.java).getCharacterDetail(id)
             val response = callResponse.execute()
             if (response.isSuccessful) {
-                subscriber.onNext(mapper.transform(response.body()!!.data!!.characters))
+                subscriber.onNext(mapper.transform(response.body()?.data!!.characters))
                 subscriber.onComplete()
             } else {
                 subscriber.onError(Throwable(response.message()))
