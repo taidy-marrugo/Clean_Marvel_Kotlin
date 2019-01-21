@@ -13,7 +13,7 @@ class CharacterDetailPresenter(view: CharacterDetailView, private val getChatact
     }
 
     private fun requestGetCharacterDetail() {
-        val subscription = getChatacterDetailServiceUseCase.invoke(view.idCharacter).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ character ->
+        val subscription = getChatacterDetailServiceUseCase(view.idCharacter).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ character ->
             if (character.isEmpty()) {
                 view.showToastNoItemToShow()
             } else {

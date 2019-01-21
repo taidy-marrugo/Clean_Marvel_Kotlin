@@ -11,17 +11,17 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.fragment.DetailCharacter
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
-class CharecterView(activity: MainActivity) {
+class CharacterView(activity: MainActivity) {
     private val activityRef = WeakReference(activity)
     private val SPAN_COUNT = 1
-    var adapter = CharacterAdapter { character ->
-        val fragment = DetailCharacterFragmentDialog.newInstance(character.id)
-        fragment.show(activity.fragmentManager,"Detail")
-    }
-
+    private var adapter: CharacterAdapter? = null
     fun init() {
         val activity = activityRef.get()
         if (activity != null) {
+                adapter = CharacterAdapter { character ->
+                val fragment = DetailCharacterFragmentDialog.newInstance(character.id)
+                fragment.show(activity.fragmentManager,"Detail")
+            }
             activity.recycleView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
             activity.recycleView.adapter = adapter
             showLoading()
@@ -45,7 +45,7 @@ class CharecterView(activity: MainActivity) {
     }
 
     fun showCharacters(characters: List<Character>) {
-        adapter.data = characters
+        adapter?.data = characters
     }
 
     fun showLoading() {
