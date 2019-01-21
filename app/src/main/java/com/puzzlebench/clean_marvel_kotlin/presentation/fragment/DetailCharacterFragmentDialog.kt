@@ -2,14 +2,12 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.fragment
 
 
 import android.app.Dialog
-import android.app.DialogFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import com.puzzlebench.clean_marvel_kotlin.R
-import android.view.Window.FEATURE_NO_TITLE
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterDetailServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxFragmentDialog
@@ -25,7 +23,7 @@ open class DetailCharacterFragmentDialog : BaseRxFragmentDialog() {
     val presenter = CharacterDetailPresenter(CharacterDetailView(this), getCharacterDetailServiceUseCase, subscriptions)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater?.inflate(R.layout.fragment_dialog_detal_character, container, false)!!
+        return inflater?.inflate(R.layout.fragment_dialog_detail_character, container, false)!!
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
