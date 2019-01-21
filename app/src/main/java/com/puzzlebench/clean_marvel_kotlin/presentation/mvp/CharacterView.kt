@@ -29,11 +29,8 @@ class CharacterView(activity: MainActivity) {
     }
 
     fun showToastNoItemToShow() {
-        val activity = activityRef.get()
-        if (activity != null) {
-            val message = activity.baseContext.resources.getString(R.string.message_no_items_to_show)
-            activity.applicationContext.showToast(message)
-        }
+        val message = activityRef.get()?.baseContext?.resources?.getString(R.string.message_no_items_to_show)
+        message?.let { activityRef.get()?.applicationContext?.showToast(it) }
     }
 
     fun showToastNetworkError(error: String) {

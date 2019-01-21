@@ -21,11 +21,8 @@ class CharacterDetailView(fragment: DetailCharacterFragmentDialog) {
     }
 
     fun showToastNoItemToShow() {
-        val fragment = fragmentRef.get()
-        if (fragment != null) {
-            val message = fragment.resources.getString(R.string.message_no_detail_to_show)
-           fragmentRef.get()?.activity?.showToast(message)
-        }
+        val message = fragmentRef.get()?.resources?.getString(R.string.message_no_detail_to_show)
+        message?.let { fragmentRef.get()?.activity?.showToast(it) }
     }
 
     fun showToastNetworkError(error: String) {
@@ -33,12 +30,9 @@ class CharacterDetailView(fragment: DetailCharacterFragmentDialog) {
     }
 
     fun showCharactersDetail(character: Character) {
-        val fragment = fragmentRef.get()
-        if (fragment != null) {
-            fragment.text_dialog_detail_character_name.text = character.name
-            fragment.text_dialog_detail_character_description.text = character.description
+            fragmentRef.get()?.text_dialog_detail_character_name?.text = character.name
+            fragmentRef.get()?.text_dialog_detail_character_description?.text = character.description
             val string = character.thumbnail.path + "." + character.thumbnail.extension
-            fragment.characterPicture.getImageByUrl(string)
-        }
+            fragmentRef.get()?.characterPicture?.getImageByUrl(string)
     }
 }
