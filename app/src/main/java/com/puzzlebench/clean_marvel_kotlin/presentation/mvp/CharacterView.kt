@@ -7,47 +7,40 @@ import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
+import com.puzzlebench.clean_marvel_kotlin.presentation.fragment.DetailCharacterFragmentDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
-class CharecterView(activity: MainActivity) {
-    private val activityRef = WeakReference(activity)
+class CharacterView(private val activity: MainActivity) {
     private val SPAN_COUNT = 1
-    var adapter = CharacterAdapter { character -> activity.applicationContext.showToast(character.name) }
-
+    private var adapter: CharacterAdapter? = null
     fun init() {
-        val activity = activityRef.get()
-        if (activity != null) {
+                adapter = CharacterAdapter { character ->
+                val fragment = DetailCharacterFragmentDialog.newInstance(character.id)
+                fragment.show(activity.fragmentManager,"Detail")
+            }
             activity.recycleView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
             activity.recycleView.adapter = adapter
             showLoading()
-        }
-
     }
 
     fun showToastNoItemToShow() {
-        val activity = activityRef.get()
-        if (activity != null) {
-            val message = activity.baseContext.resources.getString(R.string.message_no_items_to_show)
-            activity.applicationContext.showToast(message)
-
-        }
+        activity.resources?.getString(R.string.message_no_items_to_show)?.let { activity.applicationContext?.showToast(it) }
     }
 
     fun showToastNetworkError(error: String) {
-        activityRef.get()!!.applicationContext.showToast(error)
+        activity.applicationContext?.showToast(error)
     }
 
     fun hideLoading() {
-        activityRef.get()!!.progressBar.visibility = View.GONE
+        activity.progressBar?.visibility = View.GONE
     }
 
     fun showCharacters(characters: List<Character>) {
-        adapter.data = characters
+        adapter?.data = characters
     }
 
     fun showLoading() {
-        activityRef.get()!!.progressBar.visibility = View.VISIBLE
-
+        activity.progressBar?.visibility = View.VISIBLE
     }
 }
