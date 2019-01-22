@@ -33,10 +33,7 @@ class CharacterDetailView(private  val fragment: DetailCharacterFragmentDialog) 
     fun showCharactersDetail(character: Character) {
         fragment.text_dialog_detail_character_name?.text = character.name
         fragment.text_dialog_detail_character_description?.text = character.description
-        val dot = "."
-        val path = character.thumbnail.path
-        val extension = character.thumbnail.extension
-        val string = "$path$dot$extension"
+        val string =character.thumbnail.path.plus(".").plus(character.thumbnail.extension)
         fragment.characterPicture?.getImageByUrl(string)
     }
 }
