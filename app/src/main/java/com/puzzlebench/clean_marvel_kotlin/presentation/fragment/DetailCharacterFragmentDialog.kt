@@ -10,6 +10,7 @@ import android.view.Window
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterDetailServiceUseCase
+import com.puzzlebench.clean_marvel_kotlin.presentation.Util
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxFragmentDialog
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterDetailPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterDetailView
@@ -18,7 +19,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterDetailView
 private const val ARG_ID = "ID_CHARACTER"
 
 open class DetailCharacterFragmentDialog : BaseRxFragmentDialog() {
-    var idCharacter: Int? = null
+    var idCharacter: Int=Util.DEFAULT_ID_CHARACTER
     val getCharacterDetailServiceUseCase = GetCharacterDetailServiceUseCase(CharacterServicesImpl())
     val presenter = CharacterDetailPresenter(CharacterDetailView(this), getCharacterDetailServiceUseCase, subscriptions)
 

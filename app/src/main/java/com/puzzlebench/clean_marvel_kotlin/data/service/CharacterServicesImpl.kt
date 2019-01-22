@@ -16,15 +16,15 @@ class CharacterServicesImpl(private val api: MarvelResquestGenerator = MarvelRes
             return Observable.fromCallable(Callable<List<Character>>() {
                 val callResponse = api.createService(MarvelApi::class.java).getCharacter()
                 val response = callResponse.execute()
-                return@Callable  mapper.transform(response.body()?.data!!.characters)
+                return@Callable response.body()?.data?.characters?.let { mapper.transform(it) }
             });
     }
 
-    fun getCaractersDetail(id: Int?): Observable<List<Character>> {
+    fun getCaractersDetail(id: Int): Observable<List<Character>> {
         return Observable.fromCallable(Callable<List<Character>>() {
             val callResponse = api.createService(MarvelApi::class.java).getCharacterDetail(id)
             val response = callResponse.execute()
-            return@Callable  mapper.transform(response.body()?.data!!.characters)
+            return@Callable response.body()?.data?.characters?.let { mapper.transform(it) }
         });
     }
 }

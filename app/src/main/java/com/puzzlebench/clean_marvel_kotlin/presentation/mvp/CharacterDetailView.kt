@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
+import com.puzzlebench.clean_marvel_kotlin.presentation.Util
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.getImageByUrl
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.fragment.DetailCharacterFragmentDialog
@@ -12,7 +13,7 @@ import java.lang.ref.WeakReference
 
 class CharacterDetailView(fragment: DetailCharacterFragmentDialog) {
    private  val fragment=fragment
-    var idCharacter: Int? = null
+    var idCharacter: Int= Util.DEFAULT_ID_CHARACTER
 
     fun init() {
 
