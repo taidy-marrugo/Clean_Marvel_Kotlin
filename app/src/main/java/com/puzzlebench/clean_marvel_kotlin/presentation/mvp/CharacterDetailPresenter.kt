@@ -9,10 +9,9 @@ import io.reactivex.schedulers.Schedulers
 class CharacterDetailPresenter(view: CharacterDetailView, private val getChatacterDetailServiceUseCase: GetCharacterDetailServiceUseCase, val subscriptions: CompositeDisposable) : Presenter<CharacterDetailView>(view) {
     fun init() {
         view.init()
-        requestGetCharacterDetail()
     }
 
-    private fun requestGetCharacterDetail() {
+     fun requestGetCharacterDetail() {
         val subscription = getChatacterDetailServiceUseCase(view.idCharacter).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ character ->
             if (character.isEmpty()) {
                 view.showToastNoItemToShow()

@@ -40,10 +40,11 @@ open class DetailCharacterFragmentDialog : BaseRxFragmentDialog() {
     override fun onStart() {
         super.onStart()
         presenter.init()
+        presenter.requestGetCharacterDetail()
     }
 
     companion object {
-        @JvmStatic
+
         fun newInstance(idCharacter: Int) =
                 DetailCharacterFragmentDialog().apply {
                     arguments = Bundle().apply {
