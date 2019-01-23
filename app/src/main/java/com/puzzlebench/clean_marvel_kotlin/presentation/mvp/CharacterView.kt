@@ -1,5 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
@@ -42,5 +43,8 @@ class CharacterView(private val activity: MainActivity) {
 
     fun showLoading() {
         activity.progressBar?.visibility = View.VISIBLE
+    }
+    fun getFloatingButton():FloatingActionButton{
+        return activity.floatingActionButton;
     }
 }
