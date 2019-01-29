@@ -17,13 +17,13 @@ open class MarvelCharacter : RealmObject() {
     @SerializedName("id") @PrimaryKey open var id: Long = 0
     @SerializedName("name") open var name: String? = ""
     @SerializedName("description") open var description: String? = ""
-    //@SerializedName("modified") open var modified: String? = ""
+    @SerializedName("modified") open var modified: String? = ""
     @SerializedName("thumbnail") open var thumbnail: CharacterThumbnail? = CharacterThumbnail()
-    //@SerializedName("resourceURI") open var resourceUri: String? = ""
-    //@SerializedName("comics") open var comics: MarvelComics? = MarvelComics()
-    //@SerializedName("series") open var series: MarvelSeries? = MarvelSeries()
-    //@SerializedName("stories") open var stories: MarvelStories? = MarvelStories()
-    //@SerializedName("events") open var events: MarvelEvents? = MarvelEvents()
-    //@SerializedName("urls") open var urls: RealmList<CharacterUrl>? = RealmList()
-        //@ParcelPropertyConverter(CharacterUrlRealmListConverter::class) set
+    @SerializedName("resourceURI") open var resourceUri: String? = ""
+    @SerializedName("comics") open var comics: MarvelComics? = MarvelComics()
+    @SerializedName("series") open var series: MarvelSeries? = MarvelSeries()
+    @SerializedName("stories") open var stories: MarvelStories? = MarvelStories()
+    @SerializedName("events") open var events: MarvelEvents? = MarvelEvents()
+    @SerializedName("urls") open var urls: RealmList<CharacterUrl>? = RealmList()
+        @ParcelPropertyConverter(CharacterUrlRealmListConverter::class) set
 }
